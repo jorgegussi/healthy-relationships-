@@ -1,0 +1,539 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Healthy Relationships — Jorge | HHS4U1</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link href="https://fonts.googleapis.com/css2?family=VT323&family=Orbitron:wght@400;700&display=swap" rel="stylesheet" />
+  <style>
+    * { box-sizing: border-box; margin: 0; padding: 0; }
+
+    body {
+      background: #ff7477;
+      font-family: 'VT323', monospace;
+      color: #4a1b0c;
+      min-height: 100vh;
+      padding-bottom: 3rem;
+    }
+
+    .marquee-bar {
+      background: #9cf6f6;
+      color: #0a5a5a;
+      font-size: 1.2rem;
+      padding: 6px 0;
+      overflow: hidden;
+      border-top: 3px solid #e69597;
+      border-bottom: 3px solid #e69597;
+      white-space: nowrap;
+    }
+    .marquee-inner {
+      display: inline-block;
+      animation: scroll-marquee 22s linear infinite;
+    }
+    @keyframes scroll-marquee {
+      0%   { transform: translateX(100vw); }
+      100% { transform: translateX(-100%); }
+    }
+
+    .header {
+      background: #e69597;
+      border-bottom: 4px dashed #9cf6f6;
+      padding: 1.5rem 1rem 1rem;
+      text-align: center;
+    }
+    .stars-row {
+      font-size: 1.6rem;
+      letter-spacing: 4px;
+      color: #9cf6f6;
+      text-shadow: 1px 1px 0 #ceb5b7;
+    }
+    .site-title {
+      font-family: 'Orbitron', monospace;
+      font-size: 2.2rem;
+      font-weight: 700;
+      color: #9cf6f6;
+      text-shadow: 3px 3px 0 #4a1b0c, -1px -1px 0 #0a5a5a;
+      line-height: 1.2;
+      margin: 0.4rem 0;
+      letter-spacing: 2px;
+    }
+    .subtitle {
+      font-size: 1.4rem;
+      color: #4a1b0c;
+      letter-spacing: 3px;
+    }
+    .name-badge {
+      display: inline-block;
+      background: #9cf6f6;
+      color: #0a5a5a;
+      font-family: 'Orbitron', monospace;
+      font-size: 0.75rem;
+      padding: 4px 16px;
+      border: 2px solid #4a1b0c;
+      margin-top: 0.5rem;
+      letter-spacing: 2px;
+    }
+    .counter-badge {
+      display: inline-block;
+      background: #4a1b0c;
+      color: #9cf6f6;
+      font-size: 1rem;
+      padding: 2px 10px;
+      letter-spacing: 2px;
+      margin-top: 4px;
+    }
+    .blink { animation: blink 1s step-end infinite; }
+    @keyframes blink { 50% { opacity: 0; } }
+
+    .main-container {
+      max-width: 800px;
+      margin: 0 auto;
+      padding: 1.5rem 1rem;
+    }
+
+    .section-box {
+      background: #fff0f0;
+      border: 3px solid #ceb5b7;
+      margin-bottom: 1.5rem;
+      overflow: hidden;
+    }
+    .section-header {
+      background: #ceb5b7;
+      padding: 8px 16px;
+      display: flex;
+      align-items: center;
+      gap: 10px;
+      border-bottom: 2px solid #e69597;
+    }
+    .section-header-title {
+      font-family: 'Orbitron', monospace;
+      font-size: 0.85rem;
+      color: #4a1b0c;
+      letter-spacing: 1px;
+      font-weight: 700;
+    }
+    .dot { width: 10px; height: 10px; border-radius: 50%; display: inline-block; }
+    .dot-red    { background: #ff7477; }
+    .dot-yellow { background: #ffd6a5; }
+    .dot-green  { background: #9cf6f6; }
+
+    .section-body { padding: 1.2rem; }
+
+    .intro-text {
+      font-size: 1.35rem;
+      line-height: 1.6;
+      color: #4a1b0c;
+    }
+
+    .quote-box {
+      background: #ceb5b7;
+      border-left: 5px solid #ff7477;
+      padding: 1rem 1.2rem;
+      margin: 1rem 0;
+      font-size: 1.5rem;
+      color: #4a1b0c;
+      font-style: italic;
+    }
+
+    .card-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(130px, 1fr));
+      gap: 12px;
+      margin-top: 1rem;
+    }
+    .card {
+      background: #9cf6f6;
+      border: 2px solid #b5d6d6;
+      padding: 14px 12px 12px;
+      text-align: center;
+      cursor: pointer;
+      transition: transform 0.1s;
+    }
+    .card:hover { transform: scale(1.04); background: #ff7477; }
+    .card:hover .card-title { color: #fff0f0; }
+    .card-emoji { font-size: 2rem; display: block; margin-bottom: 6px; }
+    .card-title {
+      font-family: 'Orbitron', monospace;
+      font-size: 0.65rem;
+      color: #0a5a5a;
+      font-weight: 700;
+      letter-spacing: 1px;
+    }
+
+    .detail-panel {
+      display: none;
+      background: #fff8f8;
+      border: 2px dashed #e69597;
+      padding: 1rem;
+      margin-top: 1rem;
+    }
+    .detail-panel.active { display: block; }
+    .detail-title {
+      font-family: 'Orbitron', monospace;
+      font-size: 0.9rem;
+      color: #993c1d;
+      font-weight: 700;
+      margin-bottom: 0.5rem;
+    }
+    .detail-list {
+      font-size: 1.25rem;
+      color: #4a1b0c;
+      list-style: none;
+      padding: 0;
+    }
+    .detail-list li::before { content: ">> "; color: #ff7477; }
+    .detail-list li { margin-bottom: 4px; }
+
+    .compare-grid {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 12px;
+      margin-top: 0.5rem;
+    }
+    .compare-col { padding: 1rem; border: 2px solid; }
+    .compare-col.healthy   { background: #e8fff8; border-color: #9cf6f6; }
+    .compare-col.unhealthy { background: #fff0f0; border-color: #ff7477; }
+    .compare-label {
+      font-family: 'Orbitron', monospace;
+      font-size: 0.7rem;
+      font-weight: 700;
+      letter-spacing: 1px;
+      margin-bottom: 8px;
+    }
+    .healthy .compare-label   { color: #0a5a5a; }
+    .unhealthy .compare-label { color: #993c1d; }
+    .compare-list { font-size: 1.2rem; color: #4a1b0c; list-style: none; padding: 0; }
+    .compare-list li { margin-bottom: 3px; }
+    .healthy   .compare-list li::before { content: "✓ "; color: #0a5a5a; }
+    .unhealthy .compare-list li::before { content: "✗ "; color: #993c1d; }
+
+    .three-concepts {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 10px;
+      margin-top: 0.8rem;
+    }
+    .concept-card {
+      background: #e69597;
+      border: 2px solid #ceb5b7;
+      padding: 12px 10px;
+      text-align: center;
+    }
+    .concept-icon  { font-size: 1.8rem; display: block; margin-bottom: 6px; }
+    .concept-name  { font-family: 'Orbitron', monospace; font-size: 0.6rem; color: #4a1b0c; font-weight: 700; display: block; margin-bottom: 4px; letter-spacing: 1px; }
+    .concept-desc  { font-size: 1.1rem; color: #4a1b0c; line-height: 1.3; }
+
+    .pixel-divider { text-align: center; color: #ff7477; font-size: 1.3rem; letter-spacing: 6px; margin: 0.7rem 0; }
+
+    /* LGBTQ+ section */
+    .section-box.lgbtq { border-color: #b5d6d6; background: #f0fffe; }
+    .section-box.lgbtq .section-header { background: #9cf6f6; border-bottom-color: #b5d6d6; }
+    .section-box.lgbtq .section-header-title { color: #0a5a5a; }
+
+    .rainbow-bar { display: flex; height: 8px; width: 100%; }
+    .rainbow-bar span { flex: 1; }
+
+    .pride-card-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(155px, 1fr));
+      gap: 12px;
+      margin-top: 1rem;
+    }
+    .pride-card { border: 2px solid #ceb5b7; padding: 14px 10px 12px; text-align: center; }
+    .pride-card-title { font-family: 'Orbitron', monospace; font-size: 0.62rem; color: #4a1b0c; font-weight: 700; letter-spacing: 1px; display: block; margin-top: 6px; }
+    .pride-card-desc  { font-size: 1.1rem; color: #4a1b0c; line-height: 1.3; margin-top: 4px; }
+
+    .myth-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 10px; margin-top: 0.8rem; }
+    .myth-box { padding: 10px 12px; border: 2px solid; }
+    .myth-box.myth { background: #fff0f0; border-color: #ff7477; }
+    .myth-box.fact { background: #e8fff8; border-color: #9cf6f6; }
+    .myth-label { font-family: 'Orbitron', monospace; font-size: 0.62rem; font-weight: 700; letter-spacing: 1px; margin-bottom: 6px; }
+    .myth-box.myth .myth-label { color: #993c1d; }
+    .myth-box.fact .myth-label { color: #0a5a5a; }
+    .myth-text { font-size: 1.15rem; color: #4a1b0c; line-height: 1.4; }
+
+    .footer {
+      background: #ceb5b7;
+      border-top: 4px dashed #9cf6f6;
+      padding: 1.2rem;
+      text-align: center;
+      font-size: 1.2rem;
+      color: #4a1b0c;
+    }
+
+    @media (max-width: 520px) {
+      .site-title { font-size: 1.4rem; }
+      .compare-grid { grid-template-columns: 1fr; }
+      .myth-grid    { grid-template-columns: 1fr; }
+      .three-concepts { grid-template-columns: 1fr; }
+    }
+  </style>
+</head>
+<body>
+
+  <div class="marquee-bar">
+    <span class="marquee-inner">
+      ★ JORGE'S HEALTHY RELATIONSHIPS PAGE ★ HHS4U1 CULMINATING ★ LOVE IS LOVE ★ RESPECT FOR EVERYONE ★ HEALTHY RELATIONSHIPS ROCK ★ &nbsp;&nbsp;&nbsp;
+    </span>
+  </div>
+
+  <div class="header">
+    <div class="stars-row">✦ ✦ ✦ ✦ ✦ ✦ ✦ ✦ ✦</div>
+    <div class="site-title">HEALTHY RELATIONSHIPS</div>
+    <div class="subtitle">~ Jorge's Culminating Project ~ HHS4U1 ~</div>
+    <div class="name-badge">★ BY JORGE ★ CULMINATING ★</div>
+    <br />
+    <div class="counter-badge">VISITORS: 001337 <span class="blink">|</span></div>
+    <div class="stars-row" style="margin-top:0.5rem;">✦ ✦ ✦ ✦ ✦ ✦ ✦ ✦ ✦</div>
+  </div>
+
+  <div class="main-container">
+
+    <!-- INTRO -->
+    <div class="section-box">
+      <div class="section-header">
+        <span class="dot dot-red"></span><span class="dot dot-yellow"></span><span class="dot dot-green"></span>
+        <span class="section-header-title">WHAT IS AN INTIMATE RELATIONSHIP?</span>
+      </div>
+      <div class="section-body">
+        <p class="intro-text">A relationship is when two people are close to each other. This can be a friend, a partner, or family. There are two kinds of relationships: <strong>healthy</strong> and <strong>unhealthy</strong>. It is very important to know the difference!</p>
+        <div class="quote-box">"Healthy relationships make you feel safe, happy, and respected."</div>
+        <p class="intro-text">In this project, I will explain what makes a relationship healthy or unhealthy. I will also look at respect, real examples, and how the media changes what we think about love and friendship.</p>
+      </div>
+    </div>
+
+    <!-- HEALTHY VS UNHEALTHY -->
+    <div class="section-box">
+      <div class="section-header">
+        <span class="dot dot-red"></span><span class="dot dot-yellow"></span><span class="dot dot-green"></span>
+        <span class="section-header-title">HEALTHY vs. UNHEALTHY — CLICK TO LEARN MORE</span>
+      </div>
+      <div class="section-body">
+        <div class="card-grid">
+          <div class="card" onclick="showDetail('respect')"><span class="card-emoji">🤝</span><span class="card-title">RESPECT</span></div>
+          <div class="card" onclick="showDetail('trust')"><span class="card-emoji">🔒</span><span class="card-title">TRUST</span></div>
+          <div class="card" onclick="showDetail('communication')"><span class="card-emoji">💬</span><span class="card-title">COMMUNICATION</span></div>
+          <div class="card" onclick="showDetail('boundaries')"><span class="card-emoji">🛑</span><span class="card-title">BOUNDARIES</span></div>
+          <div class="card" onclick="showDetail('support')"><span class="card-emoji">🌟</span><span class="card-title">SUPPORT</span></div>
+          <div class="card" onclick="showDetail('equality')"><span class="card-emoji">⚖️</span><span class="card-title">EQUALITY</span></div>
+        </div>
+        <div id="detail-panel" class="detail-panel">
+          <div class="detail-title" id="detail-title"></div>
+          <ul class="detail-list" id="detail-body"></ul>
+        </div>
+        <div class="pixel-divider">- - - - - - - - - - - - - - -</div>
+        <div class="compare-grid">
+          <div class="compare-col healthy">
+            <div class="compare-label">✓ HEALTHY</div>
+            <ul class="compare-list">
+              <li>You feel safe</li><li>You can say no</li><li>You trust each other</li>
+              <li>You talk openly</li><li>You feel equal</li><li>You have your own space</li>
+            </ul>
+          </div>
+          <div class="compare-col unhealthy">
+            <div class="compare-label">✗ UNHEALTHY</div>
+            <ul class="compare-list">
+              <li>You feel scared</li><li>You cannot say no</li><li>There is jealousy</li>
+              <li>You are not heard</li><li>One person controls all</li><li>You feel alone or trapped</li>
+            </ul>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- RESPECT -->
+    <div class="section-box">
+      <div class="section-header">
+        <span class="dot dot-red"></span><span class="dot dot-yellow"></span><span class="dot dot-green"></span>
+        <span class="section-header-title">WHY DOES RESPECT SHOW UP EVERYWHERE?</span>
+      </div>
+      <div class="section-body">
+        <p class="intro-text">Respect means you value the other person. You listen to them. You do not hurt them. Without respect, a relationship cannot be healthy. Respect is the base of everything.</p>
+        <p class="intro-text" style="margin-top:0.6rem;">Respect also means you respect yourself. If you do not respect yourself, it is hard to have a healthy relationship.</p>
+      </div>
+    </div>
+
+    <!-- 3 KEY CONCEPTS -->
+    <div class="section-box">
+      <div class="section-header">
+        <span class="dot dot-red"></span><span class="dot dot-yellow"></span><span class="dot dot-green"></span>
+        <span class="section-header-title">3 KEY CONCEPTS FOR A HEALTHY RELATIONSHIP</span>
+      </div>
+      <div class="section-body">
+        <p class="intro-text">These three ideas help people build strong, healthy relationships:</p>
+        <div class="three-concepts">
+          <div class="concept-card">
+            <span class="concept-icon">💡</span>
+            <span class="concept-name">INSIGHT</span>
+            <span class="concept-desc">Knowing your own feelings and why you act the way you do.</span>
+          </div>
+          <div class="concept-card">
+            <span class="concept-icon">🔄</span>
+            <span class="concept-name">MUTUALITY</span>
+            <span class="concept-desc">Both people care about each other equally. It goes both ways.</span>
+          </div>
+          <div class="concept-card">
+            <span class="concept-icon">😌</span>
+            <span class="concept-name">EMOTION REGULATION</span>
+            <span class="concept-desc">Staying calm and not hurting others when you feel angry or sad.</span>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- MEDIA ANALYSIS -->
+    <div class="section-box">
+      <div class="section-header">
+        <span class="dot dot-red"></span><span class="dot dot-yellow"></span><span class="dot dot-green"></span>
+        <span class="section-header-title">MEDIA ANALYSIS — CLAIRE &amp; BENDER (THE BREAKFAST CLUB)</span>
+      </div>
+      <div class="section-body">
+        <p class="intro-text"><strong>Claire</strong> is popular and rich. <strong>Bender</strong> is rebellious and angry. They are very different. In the movie, Bender is sometimes rude to Claire and crosses her boundaries.</p>
+        <div class="quote-box">This relationship is <strong>mostly unhealthy</strong> at the start — but they learn to understand each other.</div>
+        <p class="intro-text">Bender does not always show respect. He says hurtful things. Claire feels uncomfortable. This is an unhealthy sign.</p>
+        <p class="intro-text" style="margin-top:0.6rem;">To improve, Bender needs to work on <strong>emotion regulation</strong>. He gets very angry fast. Claire also needs <strong>insight</strong> — to understand why she stays close to someone who disrespects her.</p>
+      </div>
+    </div>
+
+    <!-- LGBTQ+ -->
+    <div class="section-box lgbtq">
+      <div class="rainbow-bar">
+        <span style="background:#ff7477;"></span>
+        <span style="background:#ffaa77;"></span>
+        <span style="background:#ffd677;"></span>
+        <span style="background:#aadd88;"></span>
+        <span style="background:#77ccee;"></span>
+        <span style="background:#bb99ee;"></span>
+      </div>
+      <div class="section-header">
+        <span class="dot dot-red"></span><span class="dot dot-yellow"></span><span class="dot dot-green"></span>
+        <span class="section-header-title">LGBTQ+ RELATIONSHIPS — LOVE IS LOVE</span>
+      </div>
+      <div class="section-body">
+        <p class="intro-text">Gay, lesbian, bisexual, and transgender people have relationships too. All the same healthy relationship rules apply. Every person deserves love, respect, and safety — no matter who they love.</p>
+        <div class="quote-box">"A healthy relationship is healthy because of how people treat each other — not because of who they are."</div>
+        <p class="intro-text">In Canada, same-sex marriage has been legal since 2005. LGBTQ+ people have the right to be in relationships just like everyone else.</p>
+        <div class="pixel-divider">~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~</div>
+        <p class="intro-text" style="margin-bottom:0.7rem;"><strong>What makes an LGBTQ+ relationship healthy?</strong></p>
+        <div class="pride-card-grid">
+          <div class="pride-card" style="background:#fff0f8; border-color:#e69597;">
+            <span class="card-emoji">🏳️‍🌈</span>
+            <span class="pride-card-title">ACCEPTANCE</span>
+            <span class="pride-card-desc">Both people accept who the other person is. They do not try to change them.</span>
+          </div>
+          <div class="pride-card" style="background:#f0fffe; border-color:#9cf6f6;">
+            <span class="card-emoji">🗣️</span>
+            <span class="pride-card-title">OPEN COMMUNICATION</span>
+            <span class="pride-card-desc">Talking honestly about identity, feelings, and needs is very important.</span>
+          </div>
+          <div class="pride-card" style="background:#fff8ee; border-color:#ffd6a5;">
+            <span class="card-emoji">🛡️</span>
+            <span class="pride-card-title">SAFETY</span>
+            <span class="pride-card-desc">Feeling safe to be yourself is a key part of any healthy relationship.</span>
+          </div>
+          <div class="pride-card" style="background:#f5f0ff; border-color:#ceb5d6;">
+            <span class="card-emoji">🤲</span>
+            <span class="pride-card-title">SUPPORT</span>
+            <span class="pride-card-desc">LGBTQ+ people may face challenges outside the relationship. A good partner supports them through this.</span>
+          </div>
+        </div>
+        <div class="pixel-divider">- - - - - - - - - - - - - - -</div>
+        <p class="intro-text" style="margin-bottom:0.7rem;"><strong>Myths vs. Facts</strong></p>
+        <div class="myth-grid">
+          <div class="myth-box myth">
+            <div class="myth-label">✗ MYTH</div>
+            <div class="myth-text">Gay relationships are not as real or as serious as straight relationships.</div>
+          </div>
+          <div class="myth-box fact">
+            <div class="myth-label">✓ FACT</div>
+            <div class="myth-text">All relationships can be deep, loving, and serious. Who you love does not change that.</div>
+          </div>
+          <div class="myth-box myth">
+            <div class="myth-label">✗ MYTH</div>
+            <div class="myth-text">LGBTQ+ relationships do not have problems like other couples.</div>
+          </div>
+          <div class="myth-box fact">
+            <div class="myth-label">✓ FACT</div>
+            <div class="myth-text">All couples face challenges. LGBTQ+ couples also need good communication and respect.</div>
+          </div>
+          <div class="myth-box myth">
+            <div class="myth-label">✗ MYTH</div>
+            <div class="myth-text">Domestic abuse does not happen in same-sex relationships.</div>
+          </div>
+          <div class="myth-box fact">
+            <div class="myth-label">✓ FACT</div>
+            <div class="myth-text">Abuse can happen in any relationship. LGBTQ+ people can also be victims and need support.</div>
+          </div>
+        </div>
+        <div class="pixel-divider">~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~</div>
+        <p class="intro-text"><strong>Extra challenges LGBTQ+ people may face:</strong></p>
+        <ul class="detail-list" style="margin-top:0.5rem;">
+          <li>Some families do not accept their relationship at first</li>
+          <li>They may face discrimination from society</li>
+          <li>They may have less support around them</li>
+          <li>This can put more pressure on the relationship</li>
+        </ul>
+        <p class="intro-text" style="margin-top:0.7rem;">This is why <strong>respect, communication, and support</strong> are even more important in these relationships. A healthy LGBTQ+ relationship helps both people feel proud of who they are.</p>
+      </div>
+      <div class="rainbow-bar">
+        <span style="background:#ff7477;"></span>
+        <span style="background:#ffaa77;"></span>
+        <span style="background:#ffd677;"></span>
+        <span style="background:#aadd88;"></span>
+        <span style="background:#77ccee;"></span>
+        <span style="background:#bb99ee;"></span>
+      </div>
+    </div>
+
+    <!-- REFLECTION -->
+    <div class="section-box">
+      <div class="section-header">
+        <span class="dot dot-red"></span><span class="dot dot-yellow"></span><span class="dot dot-green"></span>
+        <span class="section-header-title">MY PERSONAL REFLECTION</span>
+      </div>
+      <div class="section-body">
+        <p class="intro-text"><strong>Does the media change how we see relationships?</strong></p>
+        <p class="intro-text" style="margin-top:0.4rem;">Yes! Movies and TV shows make us think certain things are normal, even when they are not. For example, many movies show jealousy as love. But jealousy is actually unhealthy. Also, the media is getting better at showing LGBTQ+ relationships in a positive way, which helps people feel accepted.</p>
+        <div class="pixel-divider">~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~</div>
+        <p class="intro-text"><strong>What has the biggest impact on my beliefs about relationships?</strong></p>
+        <p class="intro-text" style="margin-top:0.4rem;">My <strong>family</strong> has the biggest impact. They show me how to treat people every day. My <strong>culture</strong> and <strong>friends</strong> also shape what I think is normal in a relationship.</p>
+        <div class="pixel-divider">~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~</div>
+        <p class="intro-text"><strong>Are friendship and romantic relationships different for me?</strong></p>
+        <p class="intro-text" style="margin-top:0.4rem;">Yes. In a <strong>friendship</strong>, I expect honesty and fun. In a <strong>romantic relationship</strong>, I also expect deeper trust and more communication. But respect is important in both — and this is true for ALL relationships, including LGBTQ+ ones!</p>
+      </div>
+    </div>
+
+  </div><!-- end main-container -->
+
+  <div class="footer">
+    <div>★ HHS4U1 | CULMINATING | BY JORGE ★</div>
+    <div style="margin-top:6px; font-size:1rem;">Made with 💾 and good vibes in the year 2025</div>
+    <div style="margin-top:4px; font-size:1rem;">🏳️‍🌈 Love is love. Everyone deserves respect. 🏳️‍🌈</div>
+    <div style="margin-top:6px; color:#993c1d; font-size:1rem;">[ BEST VIEWED IN INTERNET EXPLORER 6.0 ]</div>
+  </div>
+
+  <script>
+    const details = {
+      respect:       { title: ">> RESPECT",       items: ["You listen to each other", "You do not say mean things", "You value the other person's feelings", "You do not force them to do things"] },
+      trust:         { title: ">> TRUST",          items: ["You believe what they say", "You do not check their phone", "You are honest with each other", "You feel safe to share secrets"] },
+      communication: { title: ">> COMMUNICATION",  items: ["You talk about your feelings", "You listen when they speak", "You do not yell or insult", "You solve problems by talking"] },
+      boundaries:    { title: ">> BOUNDARIES",     items: ["You can say no and it is okay", "Your personal space is respected", "You know your limits", "They do not pressure you"] },
+      support:       { title: ">> SUPPORT",        items: ["They help when you are sad", "They celebrate your wins", "They do not put you down", "You feel stronger together"] },
+      equality:      { title: ">> EQUALITY",       items: ["Both people have power", "No one controls the other", "Decisions are made together", "Both opinions matter"] }
+    };
+
+    function showDetail(key) {
+      const panel = document.getElementById('detail-panel');
+      const title = document.getElementById('detail-title');
+      const body  = document.getElementById('detail-body');
+      const d = details[key];
+      title.textContent = d.title;
+      body.innerHTML = d.items.map(i => `<li>${i}</li>`).join('');
+      panel.classList.add('active');
+      panel.scrollIntoView({ behavior: 'smooth', block: 'nearest' });
+    }
+  </script>
+
+</body>
+</html>
